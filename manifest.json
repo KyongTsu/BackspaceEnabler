@@ -1,0 +1,43 @@
+{
+    "name": "Backspace Enabler for Google Chrome",
+    "short_name": "Backspace Enabler",
+    "background": {
+        "scripts": [
+            "js/background/analytics.js"
+        ]
+    },
+    "version": "1.0.0.0",
+    "manifest_version": 2,
+    "description": "Enables the Backspace-Key to take you back to the previous page. Brings back the Backspace-Feature.",
+    "icons": {
+        "16": "img/icon16.png",
+        "32": "img/icon32.png",
+        "48": "img/icon48.png",
+        "128": "img/icon128.png"
+    },
+    "content_security_policy": "script-src 'self' https://ssl.google-analytics.com https://apis.google.com https://ajax.googleapis.com 'unsafe-eval'; style-src 'self' 'unsafe-inline' 'unsafe-eval' ; connect-src *; object-src 'self' ",
+    "permissions": [
+        "contextMenus",
+        "privacy",
+        "storage",
+        "tabs",
+        "unlimitedStorage",
+        "webNavigation",
+        "webRequest",
+        "webRequestBlocking",
+        "http://*/*",
+        "https://*/*",
+        "notifications"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://*/*",
+                "http://*/*"
+            ],
+            "js": [
+                "js/inject/inject.js"
+            ]
+        }
+    ]
+}
